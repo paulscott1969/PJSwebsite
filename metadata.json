@@ -1,0 +1,7 @@
+{
+  "name": "PJS Plumbing & Heating Services",
+  "description": "Professional plumbing and heating services in Liverpool and Knowsley. 38+ years experience, Gas Safe registered, 24/7 emergency response.",
+  "requestFramePermissions": [
+    "geolocation"
+  ]
+}

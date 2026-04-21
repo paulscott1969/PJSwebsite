@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://liverpoolsplumber.co.uk/sitemap.xml
