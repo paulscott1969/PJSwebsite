@@ -1,5 +1,6 @@
 import React from 'react';
-import { Clock, Tag } from 'lucide-react';
+import { Clock, Tag, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import SEO from '@/components/SEO';
 
 const posts = [
@@ -51,7 +52,6 @@ export default function Blog() {
         description="Straight-talking plumbing and heating advice for Liverpool and Knowsley homeowners and landlords. Boiler tips, emergency guides, gas safety — from Paul Scott at PJS Plumbing."
         keywords="plumbing blog liverpool, heating advice knowsley, boiler tips merseyside, landlord gas safety advice, local plumber blog"
         canonical="https://liverpoolsplumber.co.uk/blog"
-        noindex
       />
 
       {/* Hero */}
@@ -72,37 +72,68 @@ export default function Blog() {
       <section className="py-24">
         <div className="container mx-auto px-6">
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
-            {posts.map((post, i) => (
-              <div
-                key={i}
-                className="group relative flex flex-col rounded-3xl border border-gray-100 bg-white p-8 shadow-sm transition-all hover:shadow-md"
-              >
-                {/* Coming soon badge */}
-                <div className="absolute right-6 top-6 rounded-full bg-gray-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-gray-500">
-                  Coming soon
-                </div>
+            {posts.map((post, i) => {
+              const isPublished = post.slug === 'radiator-cold-at-bottom';
+              
+              const CardContent = (
+                <>
+                  {!isPublished && (
+                    <div className="absolute right-6 top-6 rounded-full bg-gray-100 px-3 py-1 text-xs font-bold uppercase tracking-wider text-gray-500">
+                      Coming soon
+                    </div>
+                  )}
 
-                {/* Category tag */}
-                <div className="mb-6">
-                  <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold ${categoryColours[post.category] || 'bg-gray-100 text-gray-600'}`}>
-                    <Tag className="h-3 w-3" />
-                    {post.category}
-                  </span>
-                </div>
+                  <div className="mb-6 mt-2">
+                    <span className={`inline-flex items-center gap-1.5 rounded-full px-3 py-1 text-xs font-bold ${categoryColours[post.category] || 'bg-gray-100 text-gray-600'}`}>
+                      <Tag className="h-3 w-3" />
+                      {post.category}
+                    </span>
+                  </div>
 
-                <h2 className="mb-3 text-xl font-black text-gray-900 leading-tight group-hover:text-blue-600 transition-colors">
-                  {post.title}
-                </h2>
-                <p className="mb-auto text-sm text-gray-600 leading-relaxed">
-                  {post.description}
-                </p>
+                  <h2 className={`mb-3 text-xl font-black leading-tight transition-colors ${isPublished ? 'text-gray-900 group-hover:text-blue-600' : 'text-gray-900'}`}>
+                    {post.title}
+                  </h2>
+                  <p className="mb-auto text-sm text-gray-600 leading-relaxed">
+                    {post.description}
+                  </p>
 
-                <div className="mt-8 flex items-center gap-2 text-xs text-gray-400">
-                  <Clock className="h-3.5 w-3.5" />
-                  <span>Article coming soon</span>
+                  <div className={`mt-8 flex items-center gap-2 text-xs font-bold ${isPublished ? 'text-blue-600' : 'text-gray-400'}`}>
+                    {isPublished ? (
+                      <>
+                        <span>Read article</span>
+                        <ArrowRight className="h-3.5 w-3.5" />
+                      </>
+                    ) : (
+                      <>
+                        <Clock className="h-3.5 w-3.5" />
+                        <span>Article coming soon</span>
+                      </>
+                    )}
+                  </div>
+                </>
+              );
+
+              if (isPublished) {
+                return (
+                  <Link
+                    key={i}
+                    to={`/blog/${post.slug}`}
+                    className="group relative flex flex-col rounded-3xl border border-gray-100 bg-white p-8 shadow-sm transition-all hover:shadow-xl hover:scale-[1.02]"
+                  >
+                    {CardContent}
+                  </Link>
+                );
+              }
+
+              return (
+                <div
+                  key={i}
+                  className="group relative flex flex-col rounded-3xl border border-gray-100 bg-white p-8 shadow-sm"
+                >
+                  {CardContent}
                 </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
 
           <div className="mt-16 rounded-3xl bg-blue-50 p-10 text-center">
