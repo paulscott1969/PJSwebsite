@@ -144,6 +144,7 @@ export default function Gallery() {
                       src={img.src} 
                       alt={img.alt} 
                       loading="lazy"
+                      decoding="async"
                       className="absolute inset-0 h-full w-full object-cover transition-opacity duration-300 group-hover:opacity-90"
                       onError={(e) => {
                         (e.target as HTMLImageElement).style.opacity = '0';

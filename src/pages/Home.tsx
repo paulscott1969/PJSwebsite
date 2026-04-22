@@ -34,7 +34,8 @@ export default function Home() {
               <motion.div
                 initial={{ opacity: 0, x: -20 }}
                 animate={{ opacity: 1, x: 0 }}
-                className="mb-6 inline-flex items-center gap-2 rounded-full bg-blue-600/30 px-4 py-1.5 text-sm font-bold text-blue-300 ring-1 ring-blue-400/30"
+                viewport={{ once: true }}
+                className="will-change-transform mb-6 inline-flex items-center gap-2 rounded-full bg-blue-600/30 px-4 py-1.5 text-sm font-bold text-blue-300 ring-1 ring-blue-400/30"
               >
                 <Clock className="h-4 w-4" />
                 Got a leak? Paul&apos;s on call 24/7 across Liverpool
@@ -42,24 +43,27 @@ export default function Home() {
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.1 }}
-                className="mb-6 text-4xl font-black leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl"
+                className="will-change-transform mb-6 text-4xl font-black leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl"
               >
                 Emergency Plumber Liverpool &amp; Knowsley
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="mb-10 text-xl text-blue-100/80 sm:text-2xl"
+                className="will-change-transform mb-10 text-xl text-blue-100/80 sm:text-2xl"
               >
                 I&apos;ve been fixing pipes and boilers across Liverpool for 40 years. No call centres, no hidden fees—just a proper job from a local engineer who knows his stuff.
               </motion.p>
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
                 transition={{ delay: 0.3 }}
-                className="flex flex-col gap-4 sm:flex-row"
+                className="will-change-transform flex flex-col gap-4 sm:flex-row"
               >
                 <a
                   href="tel:01514402614"
@@ -84,37 +88,41 @@ export default function Home() {
                   <motion.div
                     initial={{ opacity: 0, y: 20, rotate: -2 }}
                     animate={{ opacity: 1, y: 0, rotate: -4 }}
+                    viewport={{ once: true }}
                     transition={{ delay: 0.4 }}
-                    className="relative mt-8 aspect-[4/5] overflow-hidden rounded-2xl bg-blue-800 shadow-2xl ring-4 ring-white/10"
+                    className="will-change-transform relative mt-8 aspect-[4/5] overflow-hidden rounded-2xl bg-blue-800 shadow-2xl ring-4 ring-white/10"
                   >
-                    <img src="/images/gallery/boiler-installation-utility-room-heating-system.webp" alt="Professional boiler installation in a Liverpool home utility room" loading="eager" className="relative z-10 h-full w-full object-cover transition-opacity duration-300 hover:opacity-90" width="1536" height="2048" />
+                    <img src="/images/gallery/boiler-installation-utility-room-heating-system.webp" alt="Professional boiler installation in a Liverpool home utility room" loading="eager" decoding="async" fetchPriority="high" className="relative z-10 h-full w-full object-cover transition-opacity duration-300 hover:opacity-90" width="1536" height="2048" />
                   </motion.div>
 
                   <motion.div
                     initial={{ opacity: 0, y: 20, rotate: 2 }}
                     animate={{ opacity: 1, y: 0, rotate: 3 }}
+                    viewport={{ once: true }}
                     transition={{ delay: 0.5 }}
-                    className="relative z-20 -mb-8 aspect-square overflow-hidden rounded-2xl bg-blue-700 shadow-2xl ring-4 ring-white/10"
+                    className="will-change-transform relative z-20 -mb-8 aspect-square overflow-hidden rounded-2xl bg-blue-700 shadow-2xl ring-4 ring-white/10"
                   >
-                    <img src="/images/gallery/bathroom-renovation-near-completion.webp" alt="Luxury bathroom renovation project in Merseyside near completion" loading="lazy" className="relative z-10 h-full w-full object-cover transition-opacity duration-300 hover:opacity-90" width="1536" height="2048" />
+                    <img src="/images/gallery/bathroom-renovation-near-completion.webp" alt="Luxury bathroom renovation project in Merseyside near completion" loading="lazy" decoding="async" className="relative z-10 h-full w-full object-cover transition-opacity duration-300 hover:opacity-90" width="1536" height="2048" />
                   </motion.div>
 
                   <motion.div
                     initial={{ opacity: 0, y: 20, rotate: 3 }}
                     animate={{ opacity: 1, y: 0, rotate: 2 }}
+                    viewport={{ once: true }}
                     transition={{ delay: 0.6 }}
-                    className="relative z-30 -mt-12 aspect-square overflow-hidden rounded-2xl bg-blue-700 shadow-2xl ring-4 ring-white/10 ml-4"
+                    className="will-change-transform relative z-30 -mt-12 aspect-square overflow-hidden rounded-2xl bg-blue-700 shadow-2xl ring-4 ring-white/10 ml-4"
                   >
-                    <img src="/images/gallery/radiator-installation-central-heating-home-service.webp" alt="New radiator installation for a central heating system in Liverpool" loading="lazy" className="relative z-10 h-full w-full object-cover transition-opacity duration-300 hover:opacity-90" width="1536" height="2048" />
+                    <img src="/images/gallery/radiator-installation-central-heating-home-service.webp" alt="New radiator installation for a central heating system in Liverpool" loading="lazy" decoding="async" className="relative z-10 h-full w-full object-cover transition-opacity duration-300 hover:opacity-90" width="1536" height="2048" />
                   </motion.div>
 
                   <motion.div
                     initial={{ opacity: 0, y: 20, rotate: -2 }}
                     animate={{ opacity: 1, y: 0, rotate: -3 }}
+                    viewport={{ once: true }}
                     transition={{ delay: 0.7 }}
-                    className="relative z-10 aspect-[4/5] overflow-hidden rounded-2xl bg-blue-800 shadow-2xl ring-4 ring-white/10 -ml-4"
+                    className="will-change-transform relative z-10 aspect-[4/5] overflow-hidden rounded-2xl bg-blue-800 shadow-2xl ring-4 ring-white/10 -ml-4"
                   >
-                    <img src="/images/gallery/glass-shower-enclosure-installation-modern-bathroom.webp" alt="Modern glass shower enclosure installation service" loading="lazy" className="relative z-10 h-full w-full object-cover transition-opacity duration-300 hover:opacity-90" width="1536" height="2048" />
+                    <img src="/images/gallery/glass-shower-enclosure-installation-modern-bathroom.webp" alt="Modern glass shower enclosure installation service" loading="lazy" decoding="async" className="relative z-10 h-full w-full object-cover transition-opacity duration-300 hover:opacity-90" width="1536" height="2048" />
                   </motion.div>
                 </div>
                 <div className="absolute top-1/2 left-1/2 -z-10 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/20 blur-3xl" />
@@ -191,8 +199,12 @@ export default function Home() {
             ].map((service, i) => (
               <motion.div
                 key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
                 whileHover={{ y: -10 }}
-                className="group rounded-3xl bg-white p-8 shadow-sm transition-all hover:shadow-xl"
+                transition={{ delay: i * 0.1 }}
+                className="will-change-transform group rounded-3xl bg-white p-8 shadow-sm transition-all hover:shadow-xl"
               >
                 <div className="mb-6 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-blue-50 text-blue-600 transition-colors group-hover:bg-blue-600 group-hover:text-white">
                   <service.icon className="h-7 w-7" />
@@ -386,6 +398,7 @@ export default function Home() {
                 alt="PJS Plumbing and Heating service van parked at a residential property in Liverpool"
                 className="h-full w-full object-cover rounded-3xl"
                 loading="lazy"
+                decoding="async"
               width="1200" height="1096" />
             </div>
           </div>

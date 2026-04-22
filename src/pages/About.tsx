@@ -63,6 +63,7 @@ export default function About() {
                   alt="Paul Scott owner and Gas Safe engineer of PJS Plumbing and Heating Services standing by his van in Liverpool"
                   className="h-full w-full object-cover rounded-3xl"
                   loading="lazy"
+                  decoding="async"
                 width="1536" height="2048" />
               </div>
               <div className="absolute -bottom-8 -left-8 rounded-3xl bg-blue-600 p-8 text-white shadow-xl">

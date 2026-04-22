@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Suspense, lazy } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import Header from './Header';
 import Footer from './Footer';
-import StickyCallButton from './StickyCallButton';
-import Chatbot from './Chatbot';
 import { motion, AnimatePresence } from 'motion/react';
+
+const StickyCallButton = lazy(() => import('./StickyCallButton'));
+const Chatbot = lazy(() => import('./Chatbot'));
 
 export default function Layout() {
   const { pathname } = useLocation();
@@ -30,8 +31,10 @@ export default function Layout() {
         </AnimatePresence>
       </main>
       <Footer />
-      <StickyCallButton />
-      <Chatbot />
+      <Suspense fallback={null}>
+        <StickyCallButton />
+        <Chatbot />
+      </Suspense>
     </div>
   );
 }

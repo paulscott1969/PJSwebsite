@@ -24,3 +24,21 @@
 @utility glass-panel {
   @apply bg-white/70 backdrop-blur-md border border-white/20 shadow-xl;
 }
+
+@utility will-change-transform {
+  will-change: transform;
+}
+
+@utility will-change-opacity {
+  will-change: opacity;
+}
+
+@utility will-change-transform-opacity {
+  will-change: transform, opacity;
+}
+
+/* Optimize rendering for sections below the fold */
+.optimize-render {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 500px;
+}
