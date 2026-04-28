@@ -6,7 +6,7 @@ export default function StructuredData() {
 
   const baseSchema = {
     "@context": "https://schema.org",
-    "@type": "PlumbingBusiness",
+    "@type": "Plumber",
     "name": "PJS Plumbing & Heating Services",
     "image": "https://liverpoolsplumber.co.uk/images/owner/plumbing-service-van-branding-residential-driveway.webp",
     "@id": "https://liverpoolsplumber.co.uk",
@@ -31,8 +31,8 @@ export default function StructuredData() {
       "dayOfWeek": [
         "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"
       ],
-      "opens": "00:00",
-      "closes": "23:59"
+      "opens": "07:00",
+      "closes": "20:00"
     },
     "areaServed": [
       { "@type": "City", "name": "Liverpool" },
@@ -272,28 +272,84 @@ export default function StructuredData() {
       "mainEntity": [
         {
           "@type": "Question",
-          "name": "Do you offer emergency plumbing in Liverpool?",
+          "name": "Is PJS Plumbing Gas Safe registered?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Paul Scott offers a 24/7 emergency plumbing service across Liverpool and Knowsley. Call 0151 440 2614 directly — no call centres."
+            "text": "Yes. Paul Scott is Gas Safe registered under number 221708. You can verify this on the Gas Safe Register website. He carries his Gas Safe ID card on every job and is happy to show it when he arrives."
           }
         },
         {
           "@type": "Question",
-          "name": "Is Paul Scott Gas Safe registered?",
+          "name": "What areas do you cover?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Yes. Paul is Gas Safe registered under number 221708. You can verify this at gassaferegister.co.uk."
+            "text": "I cover Liverpool, Knowsley, Huyton, Prescot, Whiston, Rainhill, Kirkby, Halewood, St Helens, and most of Merseyside. If you're not sure, give me a ring on 0151 440 2614 and I'll let you know."
           }
         },
         {
           "@type": "Question",
-          "name": "What areas do you cover in Merseyside?",
+          "name": "Do you do emergency callouts?",
           "acceptedAnswer": {
             "@type": "Answer",
-            "text": "Paul covers the whole of Liverpool and Knowsley, including Huyton, Prescot, Whiston, Kirkby, Halewood, Rainhill, and St Helens."
+            "text": "Yes. I operate a 24/7 emergency service for burst pipes, major leaks, and gas issues across Liverpool and Knowsley. Call 0151 440 2614 — you'll speak to me directly, not a call centre."
           }
         },
+        {
+          "@type": "Question",
+          "name": "How quickly can you get to me?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For emergencies, I aim to be with you within the hour if I'm not already on another emergency. For booked jobs, I give you a specific time slot — none of this 'between 9 and 5' rubbish."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you install and repair boilers?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. I repair all makes and models and install new boilers. I'll talk you through your options honestly — I won't push an expensive boiler if a repair will sort it. I'm Gas Safe registered (221708) so all gas work is done legally and safely."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Can you provide a Gas Safety Certificate for my rental property?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. I carry out CP12 gas safety inspections for landlords across Liverpool and Knowsley. I'll check all your gas appliances, issue the certificate on the day, and give you a copy for your records. Turnaround is fast — usually within a few days of booking."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I get a quote?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Call me on 0151 440 2614 or fill in the form on the contact page. For small jobs like a leaky tap or toilet repair, I can often price it over the phone. For bigger work like a boiler install, I'll come out and give you a free, no-obligation quote."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you work weekends?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. I work seven days a week when needed. Emergencies don't wait for Monday, and I know a lot of people find it easier to have work done at the weekend. Just call and I'll fit you in."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's your callout process?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "You call me, I answer (or call you back within minutes). We have a quick chat about the problem. If I need to come out, I give you a time and I stick to it. I diagnose the issue, tell you the cost upfront, and only start work once you've agreed. No surprises."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Are you insured?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. I carry full public liability insurance. In 40 years I've rarely needed it, but it's there for your peace of mind and mine. I'm happy to provide proof if you need it."
+          }
+        }
       ]
     }
   };

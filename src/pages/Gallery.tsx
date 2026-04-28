@@ -43,7 +43,7 @@ const galleryCategories = [
   {
     id: 'pipework',
     title: 'Pipework & Repairs',
-    description: 'Tracing hidden leaks, replacing water-damaged pipes, and carrying out reliable drainage repairs.',
+    description: 'Tracing hidden leaks, replacing water-damaged pipes, and carrying out drainage repairs that last.',
     images: [
       { src: '/images/gallery/bathroom-drain-pipe-repair-water-damage-floor.webp', alt: 'Bathroom drain pipe repair water damage Liverpool' },
       { src: '/images/gallery/bathroom-plumbing-pipe-installation-floor-renovation.webp', alt: 'Bathroom plumbing pipe installation floor renovation Liverpool' },

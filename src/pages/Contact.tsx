@@ -1,30 +1,91 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 import { Phone, Mail, MapPin, Send, ShieldCheck, Clock, CheckCircle2, Facebook, Instagram } from 'lucide-react';
 import { motion } from 'motion/react';
 import SEO from '@/components/SEO';
 import emailjs from '@emailjs/browser';
-import { useRef } from 'react';
+
+// Sanitise input: strip HTML tags and script content
+function sanitise(input: string): string {
+  return input
+    .replace(/<script[\s\S]*?<\/script>/gi, '')
+    .replace(/<[^>]*>/g, '')
+    .trim();
+}
+
+// Validation helpers
+function isValidName(name: string): boolean {
+  return name.length >= 2 && /^[a-zA-Z\s'-]+$/.test(name);
+}
+
+function isValidPhone(phone: string): boolean {
+  const digits = phone.replace(/[\s\-\(\)]/g, '');
+  return /^(\+44|0)7\d{9}$/.test(digits) || /^0\d{10}$/.test(digits);
+}
+
+function isValidEmail(email: string): boolean {
+  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+}
+
+function isValidMessage(message: string): boolean {
+  return message.length >= 10;
+}
 
 export default function Contact() {
   const formRef = useRef<HTMLFormElement>(null);
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
+  const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
+  const [rateLimitMsg, setRateLimitMsg] = useState('');
+  const lastSubmitRef = useRef<number>(0);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!formRef.current) return;
-    
+
+    // Honeypot check — silently reject bots
+    const honeypot = formRef.current.querySelector<HTMLInputElement>('input[name="_honey"]');
+    if (honeypot && honeypot.value) {
+      setFormState('success');
+      return;
+    }
+
+    // Rate limiting — 60 second cooldown
+    const now = Date.now();
+    if (now - lastSubmitRef.current < 60000) {
+      setRateLimitMsg('Please wait before sending another message.');
+      return;
+    }
+    setRateLimitMsg('');
+
+    // Gather and sanitise form data
+    const formData = new FormData(formRef.current);
+    const name = sanitise(formData.get('from_name') as string || '');
+    const phone = sanitise(formData.get('phone') as string || '');
+    const message = sanitise(formData.get('message') as string || '');
+
+    // Validate inputs
+    const errors: Record<string, string> = {};
+    if (!isValidName(name)) errors.from_name = 'Enter your name (letters only, at least 2 characters).';
+    if (!isValidPhone(phone)) errors.phone = 'Enter a valid UK phone number (e.g. 07xxx or +447xxx).';
+    if (!isValidMessage(message)) errors.message = 'Please give a bit more detail (at least 10 characters).';
+
+    if (Object.keys(errors).length > 0) {
+      setValidationErrors(errors);
+      return;
+    }
+
+    setValidationErrors({});
     setFormState('submitting');
-    
+
     try {
       await emailjs.sendForm(
-        'paulsbackend',
-        'pjsform',
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
         formRef.current,
-        'X-Mp_dS5vF2tP4hhU'
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
+      lastSubmitRef.current = Date.now();
       setFormState('success');
-    } catch (error) {
-      console.error('EmailJS error:', error);
+    } catch {
       setFormState('error');
     }
   };
@@ -32,8 +93,8 @@ export default function Contact() {
   return (
     <>
       <SEO 
-        title="Contact Paul Scott | Local Plumber Liverpool & Knowsley"
-        description="Get in touch with Paul Scott at PJS Plumbing — Liverpool's trusted local plumber and Gas Safe engineer. Available 24/7 for emergencies across Liverpool and Knowsley."
+        title="Contact Paul Scott | Local Plumber Liverpool &amp; Knowsley"
+        description="Get in touch with Paul Scott at PJS Plumbing. Call directly or fill in the form for a quick callback. Gas Safe registered, covering Liverpool and Knowsley."
         keywords="contact plumber liverpool, plumber knowsley contact, emergency plumber number liverpool, pjs plumbing contact"
         canonical="https://liverpoolsplumber.co.uk/contact"
       />
@@ -134,13 +195,29 @@ export default function Contact() {
                     <div className="mb-6 rounded-xl bg-red-50 p-4 text-red-600 border border-red-100 flex items-start gap-3">
                       <ShieldCheck className="h-5 w-5 shrink-0 mt-0.5" />
                       <div>
-                        <p className="font-bold">Something went wrong sending your message.</p>
-                        <p className="text-sm mt-1">Please try again or call Paul directly on 0151 440 2614.</p>
+                        <p className="font-bold">Something went wrong. Please try again or call directly.</p>
+                        <p className="text-sm mt-1">Call Paul on 0151 440 2614.</p>
                       </div>
                     </div>
                   )}
 
+                  {rateLimitMsg && (
+                    <div className="mb-6 rounded-xl bg-yellow-50 p-4 text-yellow-700 border border-yellow-100">
+                      <p className="font-bold">{rateLimitMsg}</p>
+                    </div>
+                  )}
+
                   <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
+                    {/* Honeypot — hidden from humans */}
+                    <input
+                      type="text"
+                      name="_honey"
+                      aria-hidden="true"
+                      tabIndex={-1}
+                      autoComplete="off"
+                      style={{ position: 'absolute', opacity: 0, height: 0, width: 0, overflow: 'hidden' }}
+                    />
+
                     <div className="grid gap-6 sm:grid-cols-2">
                       <div className="space-y-2">
                         <label className="text-sm font-bold text-gray-700">Who am I speaking to?</label>
@@ -151,6 +228,9 @@ export default function Contact() {
                           className="w-full rounded-xl bg-gray-50 px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
                           placeholder="Your Name"
                         />
+                        {validationErrors.from_name && (
+                          <p className="text-sm text-red-500">{validationErrors.from_name}</p>
+                        )}
                       </div>
                       <div className="space-y-2">
                         <label className="text-sm font-bold text-gray-700">Best number to reach you on?</label>
@@ -161,6 +241,9 @@ export default function Contact() {
                           className="w-full rounded-xl bg-gray-50 px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
                           placeholder="Phone Number"
                         />
+                        {validationErrors.phone && (
+                          <p className="text-sm text-red-500">{validationErrors.phone}</p>
+                        )}
                       </div>
                     </div>
                     <div className="space-y-2">
@@ -183,6 +266,9 @@ export default function Contact() {
                         className="w-full rounded-xl bg-gray-50 px-4 py-3 text-gray-900 focus:outline-none focus:ring-2 focus:ring-blue-500"
                         placeholder="Tell me what's going on..."
                       />
+                      {validationErrors.message && (
+                        <p className="text-sm text-red-500">{validationErrors.message}</p>
+                      )}
                     </div>
                     <button
                       disabled={formState === 'submitting'}

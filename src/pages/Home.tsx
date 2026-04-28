@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Phone, ArrowRight, ShieldCheck, Clock, Award, CheckCircle2, Wrench, Flame, Droplets, Thermometer, MapPin, Star, ExternalLink } from 'lucide-react';
 import { motion } from 'motion/react';
 import SEO from '@/components/SEO';
+import HomeFAQ from '@/components/HomeFAQ';
 
 export default function Home() {
   React.useEffect(() => {
@@ -17,8 +18,8 @@ export default function Home() {
   return (
     <>
       <SEO
-        title="Emergency Plumber Liverpool & Knowsley | 24/7 Local Service"
-        description="Need a reliable plumber in Liverpool or Knowsley? Paul Scott offers 24/7 emergency repairs, boiler servicing, and heating installations. 40 years experience, Gas Safe registered."
+        title="Plumber Liverpool | Gas Safe Heating Engineer Knowsley | PJS Plumbing &amp; Heating"
+        description="Liverpool plumber and Gas Safe heating engineer. Boiler repairs, installations and emergency callouts across Merseyside. Call Paul Scott today."
         keywords="emergency plumber liverpool, plumber knowsley, boiler repair liverpool, local plumber liverpool, gas safe engineer"
         canonical="https://liverpoolsplumber.co.uk/"
       />
@@ -38,7 +39,7 @@ export default function Home() {
                 className="will-change-transform mb-6 inline-flex items-center gap-2 rounded-full bg-blue-600/30 px-4 py-1.5 text-sm font-bold text-blue-300 ring-1 ring-blue-400/30"
               >
                 <Clock className="h-4 w-4" />
-                Got a leak? Paul&apos;s on call 24/7 across Liverpool
+                Burst pipe? Boiler gone? Paul&apos;s on call 24/7
               </motion.div>
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
@@ -47,17 +48,33 @@ export default function Home() {
                 transition={{ delay: 0.1 }}
                 className="will-change-transform mb-6 text-4xl font-black leading-[1.1] tracking-tight sm:text-5xl lg:text-6xl"
               >
-                Emergency Plumber Liverpool &amp; Knowsley
+                Paul Scott — Your Liverpool Plumber &amp; Gas Safe Engineer
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: 0.2 }}
-                className="will-change-transform mb-10 text-xl text-blue-100/80 sm:text-2xl"
+                className="will-change-transform mb-4 text-xl text-blue-100/80 sm:text-2xl"
               >
-                I&apos;ve been fixing pipes and boilers across Liverpool for 40 years. No call centres, no hidden fees—just a proper job from a local engineer who knows his stuff.
+                40 years fixing pipes and boilers across Liverpool. No call centres, no hidden fees — just me, Paul, doing the job properly.
               </motion.p>
+
+              {/* Trust Signal: Customer Review in Hero */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.25 }}
+                className="will-change-transform mb-8 rounded-2xl bg-white/10 p-4 ring-1 ring-white/10 backdrop-blur-sm"
+              >
+                <div className="flex gap-1 mb-2">
+                  {[1,2,3,4,5].map(n => <Star key={n} className="h-4 w-4 fill-yellow-400 text-yellow-400" />)}
+                </div>
+                <p className="text-sm text-blue-100 italic">&quot;Rang Paul at 11pm on a Sunday — burst pipe under the kitchen sink. He was at mine within 40 minutes and had it sorted by midnight. Saved my floorboards. Absolute legend.&quot;</p>
+                <p className="mt-2 text-xs font-bold text-blue-300">— John M, Wavertree</p>
+              </motion.div>
+
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -70,7 +87,7 @@ export default function Home() {
                   className="flex items-center justify-center gap-3 rounded-full bg-blue-600 px-8 py-4 text-lg font-bold text-white transition-all hover:bg-blue-700 hover:shadow-2xl hover:shadow-blue-500/40 active:scale-95"
                 >
                   <Phone className="h-5 w-5 fill-current" />
-                  Call Paul Directly
+                  0151 440 2614
                 </a>
                 <Link
                   to="/contact"
@@ -92,7 +109,7 @@ export default function Home() {
                     transition={{ delay: 0.4 }}
                     className="will-change-transform relative mt-8 aspect-[4/5] overflow-hidden rounded-2xl bg-blue-800 shadow-2xl ring-4 ring-white/10"
                   >
-                    <img src="/images/gallery/boiler-installation-utility-room-heating-system.webp" alt="Professional boiler installation in a Liverpool home utility room" loading="eager" decoding="async" fetchPriority="high" className="relative z-10 h-full w-full object-cover transition-opacity duration-300 hover:opacity-90" width="1536" height="2048" />
+                    <img src="/images/gallery/boiler-installation-utility-room-heating-system.webp" alt="Paul Scott installing a Worcester boiler in a Liverpool home utility room" loading="eager" decoding="async" fetchPriority="high" className="relative z-10 h-full w-full object-cover transition-opacity duration-300 hover:opacity-90" width="1536" height="2048" />
                   </motion.div>
 
                   <motion.div
@@ -102,7 +119,7 @@ export default function Home() {
                     transition={{ delay: 0.5 }}
                     className="will-change-transform relative z-20 -mb-8 aspect-square overflow-hidden rounded-2xl bg-blue-700 shadow-2xl ring-4 ring-white/10"
                   >
-                    <img src="/images/gallery/bathroom-renovation-near-completion.webp" alt="Luxury bathroom renovation project in Merseyside near completion" loading="lazy" decoding="async" className="relative z-10 h-full w-full object-cover transition-opacity duration-300 hover:opacity-90" width="1536" height="2048" />
+                    <img src="/images/gallery/bathroom-renovation-near-completion.webp" alt="Completed bathroom renovation with new suite fitted by PJS Plumbing in Merseyside" loading="lazy" decoding="async" className="relative z-10 h-full w-full object-cover transition-opacity duration-300 hover:opacity-90" width="1536" height="2048" />
                   </motion.div>
 
                   <motion.div
@@ -112,7 +129,7 @@ export default function Home() {
                     transition={{ delay: 0.6 }}
                     className="will-change-transform relative z-30 -mt-12 aspect-square overflow-hidden rounded-2xl bg-blue-700 shadow-2xl ring-4 ring-white/10 ml-4"
                   >
-                    <img src="/images/gallery/radiator-installation-central-heating-home-service.webp" alt="New radiator installation for a central heating system in Liverpool" loading="lazy" decoding="async" className="relative z-10 h-full w-full object-cover transition-opacity duration-300 hover:opacity-90" width="1536" height="2048" />
+                    <img src="/images/gallery/radiator-installation-central-heating-home-service.webp" alt="New radiator fitted by Paul Scott as part of a central heating upgrade in Liverpool" loading="lazy" decoding="async" className="relative z-10 h-full w-full object-cover transition-opacity duration-300 hover:opacity-90" width="1536" height="2048" />
                   </motion.div>
 
                   <motion.div
@@ -122,7 +139,7 @@ export default function Home() {
                     transition={{ delay: 0.7 }}
                     className="will-change-transform relative z-10 aspect-[4/5] overflow-hidden rounded-2xl bg-blue-800 shadow-2xl ring-4 ring-white/10 -ml-4"
                   >
-                    <img src="/images/gallery/glass-shower-enclosure-installation-modern-bathroom.webp" alt="Modern glass shower enclosure installation service" loading="lazy" decoding="async" className="relative z-10 h-full w-full object-cover transition-opacity duration-300 hover:opacity-90" width="1536" height="2048" />
+                    <img src="/images/gallery/glass-shower-enclosure-installation-modern-bathroom.webp" alt="Glass shower enclosure fitted during a bathroom install by PJS Plumbing Liverpool" loading="lazy" decoding="async" className="relative z-10 h-full w-full object-cover transition-opacity duration-300 hover:opacity-90" width="1536" height="2048" />
                   </motion.div>
                 </div>
                 <div className="absolute top-1/2 left-1/2 -z-10 h-64 w-64 -translate-x-1/2 -translate-y-1/2 rounded-full bg-blue-500/20 blur-3xl" />
@@ -144,8 +161,8 @@ export default function Home() {
             >
               <ShieldCheck className="h-10 w-10 shrink-0 text-blue-600" />
               <div>
-                <p className="text-sm font-black text-gray-900">Gas Safe Reg</p>
-                <p className="text-xs text-gray-500">#221708 - Fully Vetted</p>
+                <p className="text-sm font-black text-gray-900">Gas Safe #221708</p>
+                <p className="text-xs text-gray-500">Verified on the Register</p>
               </div>
             </a>
             <div className="flex items-center gap-3 border-l border-gray-100 pl-6">
@@ -158,15 +175,15 @@ export default function Home() {
             <div className="flex items-center gap-3 border-l border-gray-100 pl-6">
               <CheckCircle2 className="h-10 w-10 shrink-0 text-blue-600" />
               <div>
-                <p className="text-sm font-black text-gray-900">Properly Insured</p>
-                <p className="text-xs text-gray-500">Total Peace of Mind</p>
+                <p className="text-sm font-black text-gray-900">Fully Insured</p>
+                <p className="text-xs text-gray-500">Public Liability Covered</p>
               </div>
             </div>
             <div className="flex items-center gap-3 border-l border-gray-100 pl-6">
               <Clock className="h-10 w-10 shrink-0 text-blue-600" />
               <div>
-                <p className="text-sm font-black text-gray-900">Liverpool Lad</p>
-                <p className="text-xs text-gray-500">Local &amp; Fast Response</p>
+                <p className="text-sm font-black text-gray-900">Based in Knowsley</p>
+                <p className="text-xs text-gray-500">Fast Local Response</p>
               </div>
             </div>
             <div className="flex items-center gap-3 border-l border-gray-100 pl-6">
@@ -184,18 +201,18 @@ export default function Home() {
       <section className="bg-gray-50 py-24">
         <div className="container mx-auto px-6">
           <div className="mb-16 text-center">
-            <h2 className="mb-4 text-4xl font-black tracking-tight text-gray-900 sm:text-5xl">Professional Plumbing Services</h2>
+            <h2 className="mb-4 text-4xl font-black tracking-tight text-gray-900 sm:text-5xl">What I Do</h2>
             <p className="mx-auto max-w-2xl text-lg text-gray-600">
-              Whether it&apos;s a dripping tap or a full heating system overhaul, Paul&apos;s got the experience to get it sorted properly.
+              Dripping tap to full heating system overhaul — 40 years of sorting it properly.
             </p>
           </div>
 
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-4">
             {[
-              { icon: Droplets, title: 'Emergency Repairs', desc: "Burst pipes, leaks, or blockages? I'll be there fast.", link: '/emergency-plumber-liverpool' },
-              { icon: Flame, title: 'Boiler Work', desc: 'Servicing, repairs, or a brand new energy-saver.', link: '/boiler-repair-servicing' },
-              { icon: Thermometer, title: 'Heating Systems', desc: "Cold radiators or noisy pumps? Let's get it warm again.", link: '/heating' },
-              { icon: Wrench, title: 'General Plumbing', desc: 'Taps, toilets, showers—all the bits and bobs.', link: '/plumbing' },
+              { icon: Droplets, title: 'Emergency Repairs', desc: "Burst pipes, leaks, or blockages — I'll get to you fast.", link: '/emergency-plumber-liverpool' },
+              { icon: Flame, title: 'Boiler Work', desc: 'Servicing, repairs, or fitting a brand new energy-saver.', link: '/boiler-repair-servicing' },
+              { icon: Thermometer, title: 'Heating Systems', desc: "Cold radiators or noisy pumps? I'll get your house warm again.", link: '/heating' },
+              { icon: Wrench, title: 'General Plumbing', desc: 'Taps, toilets, showers — all the bits and bobs.', link: '/plumbing' },
             ].map((service, i) => (
               <motion.div
                 key={i}
@@ -237,8 +254,8 @@ export default function Home() {
                     <CheckCircle2 className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="font-bold text-gray-900">Proper Local Service</h3>
-                    <p className="text-gray-600">I&apos;m based in Liverpool and I know the area like the back of my hand. I&apos;m not some faceless franchise.</p>
+                    <h3 className="font-bold text-gray-900">Born and bred in Liverpool</h3>
+                    <p className="text-gray-600">I&apos;m based in Knowsley and I know the area like the back of my hand. Not a faceless franchise — just me.</p>
                   </div>
                 </div>
                 <div className="flex gap-4">
@@ -256,21 +273,21 @@ export default function Home() {
                   </div>
                   <div>
                     <h3 className="font-bold text-gray-900">Apprenticeship Trained</h3>
-                    <p className="text-gray-600">I learned the trade properly. 40 years on the tools means there&apos;s not much I haven&apos;t seen.</p>
+                    <p className="text-gray-600">I learned the trade properly — a full apprenticeship, not a weekend course. 40 years on the tools means there&apos;s not much I haven&apos;t seen.</p>
                   </div>
                 </div>
               </div>
             </div>
 
             <div className="rounded-3xl bg-blue-600 p-12 text-white shadow-2xl">
-              <h2 className="mb-6 text-3xl font-black">A bit about how I work</h2>
+              <h2 className="mb-6 text-3xl font-black">How I work</h2>
               <p className="mb-8 text-lg text-blue-100 leading-relaxed">
-                I&apos;m not a big corporate firm with a fleet of vans. It&apos;s just me, Paul. That means when you call, you&apos;re talking to the person who&apos;s actually going to do the work. I care about my reputation in Liverpool, so I don&apos;t cut corners and I don&apos;t overcharge.
+                I&apos;m not a big corporate firm with a fleet of vans. It&apos;s just me, Paul. When you call, you&apos;re talking to the person who&apos;s actually going to do the work. I care about my reputation in Liverpool, so I don&apos;t cut corners and I don&apos;t overcharge.
               </p>
               <div className="space-y-4">
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="h-5 w-5 text-blue-300" />
-                  <span className="font-medium">You speak to me directly—no middleman.</span>
+                  <span className="font-medium">You speak to me directly — no middleman.</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="h-5 w-5 text-blue-300" />
@@ -278,7 +295,7 @@ export default function Home() {
                 </div>
                 <div className="flex items-center gap-3">
                   <CheckCircle2 className="h-5 w-5 text-blue-300" />
-                  <span className="font-medium">I&apos;ll turn up when I say I will.</span>
+                  <span className="font-medium">I turn up when I say I will.</span>
                 </div>
               </div>
               <a
@@ -297,14 +314,14 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="grid gap-16 lg:grid-cols-2">
             <div>
-              <h2 className="mb-8 text-4xl font-black tracking-tight sm:text-5xl">How the service works</h2>
+              <h2 className="mb-8 text-4xl font-black tracking-tight sm:text-5xl">How it works</h2>
               <p className="mb-6 text-lg text-gray-400">
                 I don&apos;t have a team of receptionists or a fancy booking system. When you call, you&apos;re talking to the fella who&apos;s actually going to be under your sink.
               </p>
               <div className="space-y-8">
                 <div className="flex gap-6">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-600 font-black text-white">1</div>
-                  <p className="text-gray-300">We&apos;ll have a quick chat about what&apos;s gone wrong. If it&apos;s something simple, I might even be able to tell you how to fix it yourself over the phone.</p>
+                  <p className="text-gray-300">We&apos;ll have a quick chat about what&apos;s gone wrong. If it&apos;s something simple, I might even tell you how to fix it yourself over the phone.</p>
                 </div>
                 <div className="flex gap-6">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-600 font-black text-white">2</div>
@@ -312,7 +329,7 @@ export default function Home() {
                 </div>
                 <div className="flex gap-6">
                   <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-blue-600 font-black text-white">3</div>
-                  <p className="text-gray-300">I&apos;ll get the job sorted, tidy up after myself, and make sure you&apos;re happy before I head off to the next one.</p>
+                  <p className="text-gray-300">I&apos;ll get the job sorted, tidy up after myself, and make sure you&apos;re happy before I head off.</p>
                 </div>
               </div>
             </div>
@@ -322,7 +339,7 @@ export default function Home() {
                 <blockquote className="text-2xl italic text-blue-100">
                   &quot;I&apos;ve lived in Liverpool all my life. I know the houses here, I know the pipes, and I know how much people value a bit of honesty.&quot;
                 </blockquote>
-                <p className="mt-6 font-bold text-white">— Paul Scott</p>
+                <p className="mt-6 font-bold text-white">— Paul Scott, Gas Safe Reg #221708</p>
               </div>
             </div>
           </div>
@@ -335,7 +352,7 @@ export default function Home() {
           <div className="mb-12">
             <h2 className="text-4xl font-black tracking-tight text-gray-900 sm:text-5xl">What Liverpool Residents Say</h2>
             <p className="mt-4 text-gray-600">
-              Trusted by homeowners across Merseyside for honest advice and quality workmanship.
+              Real reviews from homeowners across Merseyside.
             </p>
           </div>
 
@@ -355,9 +372,9 @@ export default function Home() {
                 <Star key={n} className="h-5 w-5 fill-yellow-400 text-yellow-400" />
               ))}
             </div>
-            <h2 className="mb-3 text-2xl font-black text-gray-900">Happy with our plumbing work? Leave a review.</h2>
+            <h2 className="mb-3 text-2xl font-black text-gray-900">Happy with the work? Leave a review.</h2>
             <p className="mb-8 text-gray-600">
-              Your feedback helps other Liverpool homeowners find a trustworthy local engineer.
+              Your feedback helps other Liverpool homeowners find a local plumber they can count on.
             </p>
             <a
               href="https://admin.trustindex.io/api/googleWriteReview?place-id=ChIJQXOVYKcfe0gRg3iUiHthno4"
@@ -377,9 +394,9 @@ export default function Home() {
         <div className="container mx-auto px-6">
           <div className="grid items-center gap-16 lg:grid-cols-2">
             <div>
-              <h2 className="mb-6 text-4xl font-black tracking-tight text-gray-900 sm:text-5xl">Serving Liverpool &amp; Merseyside</h2>
+              <h2 className="mb-6 text-4xl font-black tracking-tight text-gray-900 sm:text-5xl">Covering Liverpool &amp; Merseyside</h2>
               <p className="mb-8 text-lg text-gray-600">
-                I cover the whole of Liverpool and Knowsley, including most of Merseyside. If you&apos;re not sure whether I reach you, just give me a bell.
+                I cover the whole of Liverpool and Knowsley, plus most of Merseyside. Not sure if I reach you? Just give me a bell.
               </p>
               <div className="grid grid-cols-2 gap-4">
                 {['Liverpool City', 'Knowsley', 'Huyton', 'Prescot', 'Whiston', 'Rainhill', 'St Helens', 'Halewood'].map((area, i) => (
@@ -395,7 +412,7 @@ export default function Home() {
             </div>
             <div className="overflow-hidden rounded-3xl shadow-2xl">
               <img src="/images/owner/plumbing-service-van-branding-residential-driveway.webp"
-                alt="PJS Plumbing and Heating service van parked at a residential property in Liverpool"
+                alt="PJS Plumbing and Heating branded van parked outside a customer home in Knowsley Liverpool"
                 className="h-full w-full object-cover rounded-3xl"
                 loading="lazy"
                 decoding="async"
@@ -405,11 +422,14 @@ export default function Home() {
         </div>
       </section>
 
+      {/* FAQ Section */}
+      <HomeFAQ />
+
       {/* Final CTA */}
       <section className="bg-blue-600 py-24 text-white">
         <div className="container mx-auto px-6 text-center">
           <h2 className="mb-6 text-4xl font-black tracking-tight sm:text-6xl">Need a Local Plumber Fast?</h2>
-          <p className="mb-10 text-xl text-blue-100">Don&apos;t wait for a leak to become a disaster. Call Paul Scott now for honest advice.</p>
+          <p className="mb-10 text-xl text-blue-100">Don&apos;t wait for a leak to become a disaster. Call Paul Scott now.</p>
           <div className="flex flex-col justify-center gap-4 sm:flex-row">
             <a
               href="tel:01514402614"

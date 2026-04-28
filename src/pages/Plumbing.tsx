@@ -43,7 +43,7 @@ const faqSchema = {
       "name": "Do you fit new bathrooms?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Yes — from a like-for-like suite replacement to a full bathroom refit. Paul handles the plumbing side and can recommend reliable tilers and decorators if the job needs it."
+        "text": "Yes — from a like-for-like suite replacement to a full bathroom refit. Paul handles the plumbing side and can recommend good tilers and decorators if the job needs it."
       }
     }
   ]

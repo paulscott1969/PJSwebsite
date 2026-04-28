@@ -48,7 +48,7 @@ const servicesList = [
     cardBg: 'bg-green-50',
     title: 'General Plumbing',
     path: '/plumbing',
-    desc: 'Taps, toilets, showers, blocked drains, bathroom suites, pipework — the full range of domestic plumbing. No job is too small and nothing gets bodged.',
+    desc: 'Taps, toilets, showers, blocked drains, bathroom suites, pipework — the full range of domestic plumbing. From a dripping tap to a full bathroom fit.',
     features: ['Leaks & drips', 'Tap & toilet repairs', 'Shower installation', 'Bathroom fitting'],
     quote: '"Fixed a dripping tap that three other plumbers said wasn\'t worth bothering with. Paul sorted it in 15 minutes."',
   },

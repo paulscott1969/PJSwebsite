@@ -115,7 +115,7 @@ export default function About() {
       {/* CTA */}
       <section className="py-24">
         <div className="container mx-auto px-6 text-center">
-          <h2 className="mb-8 text-4xl font-black tracking-tight text-gray-900 sm:text-5xl">Work with a plumber you can trust.</h2>
+          <h2 className="mb-8 text-4xl font-black tracking-tight text-gray-900 sm:text-5xl">Want it done properly? Give me a ring.</h2>
           <a
             href="tel:01514402614"
             className="inline-flex items-center gap-3 rounded-full bg-blue-600 px-10 py-5 text-xl font-black text-white transition-transform hover:scale-105 active:scale-95"

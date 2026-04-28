@@ -34,7 +34,7 @@ const faqs = [
   },
   {
     question: "Do you fit new boilers as well?",
-    answer: "I do. I can recommend a good, reliable boiler that won't break the bank and will save you a bit on your heating bills. I'll handle the whole thing from start to finish."
+    answer: "I do. I can recommend a solid boiler that won't break the bank and will save you a bit on your heating bills. I'll handle the whole thing from start to finish."
   }
 ];
 

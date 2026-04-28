@@ -16,7 +16,7 @@ export default function ServiceAreas() {
     },
     {
       name: 'Knowsley',
-      description: 'Serving the entire Knowsley borough with professional plumbing and heating maintenance.',
+      description: 'Covering the entire Knowsley borough — boiler repairs, heating installs, and general plumbing.',
       keywords: ['Kirkby', 'Stockbridge Village', 'Whiston', 'Halewood'],
       links: [
         { title: 'Boiler Repair Across Knowsley', path: '/boiler-repair-knowsley' },
@@ -25,7 +25,7 @@ export default function ServiceAreas() {
     },
     {
       name: 'Huyton',
-      description: 'Local, reliable plumbing services for residents and businesses in Huyton.',
+      description: 'Fast, local plumbing for Huyton residents — I know the houses round here inside out.',
       keywords: ['Huyton-with-Roby', 'Page Moss', 'Bowring Park'],
       links: [
         { title: 'Emergency Plumber Huyton', path: '/emergency-plumber-huyton' },
@@ -140,7 +140,7 @@ export default function ServiceAreas() {
                 {[
                   'No long travel charges—I\'m local',
                   'I know the pipes in Liverpool houses',
-                  'Trusted by your neighbors for 40 years',
+                  'Your neighbours have used me for 40 years',
                   'Rapid response for Merseyside emergencies'
                 ].map((item, i) => (
                   <li key={i} className="flex items-center gap-3">

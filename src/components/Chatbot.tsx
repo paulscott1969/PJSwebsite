@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/lib/utils';
 import emailjs from '@emailjs/browser';
 
-emailjs.init('X-Mp_dS5vF2tP4hhU');
+emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
 
 const isUrgent = (text: string): boolean => {
   const keywords = [
@@ -100,8 +100,8 @@ export default function Chatbot() {
 
     try {
       await emailjs.send(
-        'paulsbackend',
-        'paulslead',
+        import.meta.env.VITE_EMAILJS_SERVICE_ID,
+        import.meta.env.VITE_EMAILJS_CHATBOT_TEMPLATE_ID,
         {
           subject: subject,
           urgency_label: urgencyLabel,
@@ -112,10 +112,10 @@ export default function Chatbot() {
           problem: userProblem,
           time: new Date().toLocaleString('en-GB')
         },
-        'X-Mp_dS5vF2tP4hhU'
+        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
       );
-    } catch (error) {
-      console.error('EmailJS error:', error);
+    } catch {
+      // Silently handle — do not expose system info
     }
   };
 

@@ -307,7 +307,7 @@ export default function BoilerRepairServicing() {
         <div className="container mx-auto px-6">
           <div className="text-center mb-8">
             <h2 className="text-3xl font-black tracking-tight text-gray-900">Local Boiler Services</h2>
-            <p className="mt-2 text-gray-600">Paul covers all of Liverpool and Knowsley. See our dedicated local pages:</p>
+            <p className="mt-2 text-gray-600">Paul covers all of Liverpool and Knowsley. See the local pages:</p>
           </div>
           <div className="flex flex-wrap justify-center gap-4">
             <a href="/boiler-repair-knowsley" className="inline-flex items-center gap-2 rounded-full bg-blue-50 px-6 py-3 font-bold text-blue-700 hover:bg-blue-100 transition-colors">

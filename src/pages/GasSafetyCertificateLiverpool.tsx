@@ -55,7 +55,7 @@ export default function GasSafetyCertificateLiverpool() {
     <>
       <SEO 
         title="Gas Safety Certificate Liverpool | CP12 Landlord Safety"
-        description="Need a Gas Safe certificate in Liverpool? Paul Scott provides professional CP12 inspections and safety checks for landlords and homeowners across Merseyside."
+        description="Need a Gas Safe certificate in Liverpool? Paul Scott carries out CP12 inspections and safety checks for landlords and homeowners across Merseyside."
         keywords="gas safety certificate liverpool, landlord gas safety check, cp12 certificate, gas safe engineer"
         canonical="https://liverpoolsplumber.co.uk/gas-safety-certificate-liverpool"
       />
