@@ -18,6 +18,7 @@ const Plumbing = lazy(() => import('./pages/Plumbing'));
 const Gallery = lazy(() => import('./pages/Gallery'));
 const Blog = lazy(() => import('./pages/Blog'));
 const BlogRadiatorColdAtBottom = lazy(() => import('./pages/BlogRadiatorColdAtBottom'));
+const BlogBoilerRepairVsReplacement = lazy(() => import('./pages/BlogBoilerRepairVsReplacement'));
 const EmergencyPlumberHuyton = lazy(() => import('./pages/EmergencyPlumberHuyton'));
 const EmergencyPlumberPrescot = lazy(() => import('./pages/EmergencyPlumberPrescot'));
 const BoilerRepairKnowsley = lazy(() => import('./pages/BoilerRepairKnowsley'));
@@ -51,6 +52,7 @@ export default function App() {
             <Route path="gallery" element={<Gallery />} />
             <Route path="blog" element={<Blog />} />
             <Route path="blog/radiator-cold-at-bottom" element={<BlogRadiatorColdAtBottom />} />
+            <Route path="blog/boiler-repair-vs-replacement" element={<BlogBoilerRepairVsReplacement />} />
             <Route path="emergency-plumber-huyton" element={<EmergencyPlumberHuyton />} />
             <Route path="emergency-plumber-prescot" element={<EmergencyPlumberPrescot />} />
             <Route path="boiler-repair-knowsley" element={<BoilerRepairKnowsley />} />

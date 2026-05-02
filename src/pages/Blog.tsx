@@ -73,7 +73,7 @@ export default function Blog() {
         <div className="container mx-auto px-6">
           <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3">
             {posts.map((post, i) => {
-              const isPublished = post.slug === 'radiator-cold-at-bottom';
+              const isPublished = post.slug === 'radiator-cold-at-bottom' || post.slug === 'boiler-repair-vs-replacement';
               
               const CardContent = (
                 <>
