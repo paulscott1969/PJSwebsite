@@ -21,7 +21,7 @@ export default function BlogBoilerRepairVsReplacement() {
               <Link to="/blog" className="mb-8 font-bold text-blue-600 hover:underline flex items-center gap-2 w-fit">
                 <ArrowLeft className="h-4 w-4" /> Back to all articles
               </Link>
-              
+
               <div className="flex flex-wrap items-center gap-4 mb-6">
                 <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-700">
                   <Tag className="h-3 w-3" /> Boilers
@@ -30,11 +30,11 @@ export default function BlogBoilerRepairVsReplacement() {
                   <Clock className="h-4 w-4" /> 5 min read
                 </span>
               </div>
-              
+
               <h1 className="mb-6 text-4xl font-black tracking-tight text-gray-900 sm:text-5xl lg:text-6xl leading-tight">
                 Boiler repair vs replacement — how to decide
               </h1>
-              
+
               <div className="flex items-center gap-4 border-b border-gray-200 pb-8">
                 <div className="h-12 w-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-black text-xl shadow-md">
                   P
