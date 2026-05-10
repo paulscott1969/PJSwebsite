@@ -358,7 +358,7 @@ export default function Home() {
 
           <div className="w-full overflow-hidden">
             {/* Elfsight Google Reviews | Untitled Google Reviews */}
-            <div className="elfsight-app-df471c6e-7ee9-4117-b36b-94e5636b391e" data-elfsight-app-lazy></div>
+            <div className="elfsight-app-53d053bc-dd72-4583-b3c4-4037199bd6a7" data-elfsight-app-lazy></div>
           </div>
         </div>
       </section>
