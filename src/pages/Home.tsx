@@ -69,7 +69,7 @@ export default function Home() {
                 className="will-change-transform mb-8 rounded-2xl bg-white/10 p-4 ring-1 ring-white/10 backdrop-blur-sm"
               >
                 <div className="flex gap-1 mb-2">
-                  {[1,2,3,4,5].map(n => <Star key={n} className="h-4 w-4 fill-yellow-400 text-yellow-400" />)}
+                  {[1, 2, 3, 4, 5].map(n => <Star key={n} className="h-4 w-4 fill-yellow-400 text-yellow-400" />)}
                 </div>
                 <p className="text-sm text-blue-100 italic">&quot;Rang Paul at 11pm on a Sunday — burst pipe under the kitchen sink. He was at mine within 40 minutes and had it sorted by midnight. Saved my floorboards. Absolute legend.&quot;</p>
                 <p className="mt-2 text-xs font-bold text-blue-300">— John M, Wavertree</p>
@@ -153,10 +153,10 @@ export default function Home() {
       <div className="bg-white py-8 shadow-sm">
         <div className="container mx-auto px-6">
           <div className="grid grid-cols-2 gap-6 md:grid-cols-5">
-            <a 
-              href="https://www.gassaferegister.co.uk/checkbusiness?bid=HLlbZxceM%252fmirePRUTS9Cw%253d%253d&cp=X4%252f9g6W4dHiAXQ6u1cr%252bRul1hBObcEL30E%252bYedIZhds%253d" 
-              target="_blank" 
-              rel="noopener noreferrer" 
+            <a
+              href="https://www.gassaferegister.co.uk/checkbusiness?bid=HLlbZxceM%252fmirePRUTS9Cw%253d%253d&cp=X4%252f9g6W4dHiAXQ6u1cr%252bRul1hBObcEL30E%252bYedIZhds%253d"
+              target="_blank"
+              rel="noopener noreferrer"
               className="flex items-center gap-3 transition-opacity hover:opacity-75"
             >
               <ShieldCheck className="h-10 w-10 shrink-0 text-blue-600" />
@@ -416,7 +416,7 @@ export default function Home() {
                 className="h-full w-full object-cover rounded-3xl"
                 loading="lazy"
                 decoding="async"
-              width="1200" height="1096" />
+                width="1200" height="1096" />
             </div>
           </div>
         </div>
