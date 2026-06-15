@@ -21,6 +21,7 @@ const BlogRadiatorColdAtBottom = lazy(() => import('./pages/BlogRadiatorColdAtBo
 const BlogBoilerRepairVsReplacement = lazy(() => import('./pages/BlogBoilerRepairVsReplacement'));
 const BlogLandlordGasSafetyCheck = lazy(() => import('./pages/BlogLandlordGasSafetyCheck'));
 const BlogBurstPipeWhatToDo = lazy(() => import('./pages/BlogBurstPipeWhatToDo'));
+const BlogCheckGasSafeRegistered = lazy(() => import('./pages/BlogCheckGasSafeRegistered'));
 const EmergencyPlumberHuyton = lazy(() => import('./pages/EmergencyPlumberHuyton'));
 const EmergencyPlumberPrescot = lazy(() => import('./pages/EmergencyPlumberPrescot'));
 const BoilerRepairKnowsley = lazy(() => import('./pages/BoilerRepairKnowsley'));
@@ -57,6 +58,7 @@ export default function App() {
             <Route path="blog/boiler-repair-vs-replacement" element={<BlogBoilerRepairVsReplacement />} />
             <Route path="blog/landlord-gas-safety-check" element={<BlogLandlordGasSafetyCheck />} />
             <Route path="blog/burst-pipe-what-to-do" element={<BlogBurstPipeWhatToDo />} />
+            <Route path="blog/check-gas-safe-registered" element={<BlogCheckGasSafeRegistered />} />
             <Route path="emergency-plumber-huyton" element={<EmergencyPlumberHuyton />} />
             <Route path="emergency-plumber-prescot" element={<EmergencyPlumberPrescot />} />
             <Route path="boiler-repair-knowsley" element={<BoilerRepairKnowsley />} />
