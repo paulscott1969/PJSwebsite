@@ -1,0 +1,37 @@
+[
+  {
+    "slug": "radiator-cold-at-bottom",
+    "title": "Why is my radiator cold at the bottom?",
+    "description": "A cold bottom but warm top usually means sludge or debris has built up inside. Here's what causes it and what to do about it.",
+    "category": "Heating",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "boiler-repair-vs-replacement",
+    "title": "Boiler repair vs replacement — how to decide",
+    "description": "When your boiler packs in, the question is always: fix it or replace it? This guide gives you a straight answer without the sales pitch.",
+    "category": "Boilers",
+    "readTime": "5 min read"
+  },
+  {
+    "slug": "landlord-gas-safety-check",
+    "title": "What does a landlord gas safety check actually involve?",
+    "description": "A lot of landlords are unsure what the annual gas safety inspection covers. This explains the full process from start to certificate.",
+    "category": "Gas Safety",
+    "readTime": "4 min read"
+  },
+  {
+    "slug": "burst-pipe-what-to-do",
+    "title": "What to do if you have a burst pipe",
+    "description": "The first few minutes matter most. Here's exactly what to do — and what NOT to do — when a pipe bursts in your home.",
+    "category": "Emergency",
+    "readTime": "5 min read"
+  },
+  {
+    "slug": "check-gas-safe-registered",
+    "title": "How to check your plumber is Gas Safe registered",
+    "description": "Anyone can claim to be Gas Safe. Here's how to verify in 30 seconds — and why it matters more than you might think.",
+    "category": "Tips",
+    "readTime": "4 min read"
+  }
+]

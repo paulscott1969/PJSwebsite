@@ -17,11 +17,7 @@ const Heating = lazy(() => import('./pages/Heating'));
 const Plumbing = lazy(() => import('./pages/Plumbing'));
 const Gallery = lazy(() => import('./pages/Gallery'));
 const Blog = lazy(() => import('./pages/Blog'));
-const BlogRadiatorColdAtBottom = lazy(() => import('./pages/BlogRadiatorColdAtBottom'));
-const BlogBoilerRepairVsReplacement = lazy(() => import('./pages/BlogBoilerRepairVsReplacement'));
-const BlogLandlordGasSafetyCheck = lazy(() => import('./pages/BlogLandlordGasSafetyCheck'));
-const BlogBurstPipeWhatToDo = lazy(() => import('./pages/BlogBurstPipeWhatToDo'));
-const BlogCheckGasSafeRegistered = lazy(() => import('./pages/BlogCheckGasSafeRegistered'));
+const BlogPost = lazy(() => import('./pages/BlogPost'));
 const EmergencyPlumberHuyton = lazy(() => import('./pages/EmergencyPlumberHuyton'));
 const EmergencyPlumberPrescot = lazy(() => import('./pages/EmergencyPlumberPrescot'));
 const BoilerRepairKnowsley = lazy(() => import('./pages/BoilerRepairKnowsley'));
@@ -54,11 +50,8 @@ export default function App() {
             <Route path="plumbing" element={<Plumbing />} />
             <Route path="gallery" element={<Gallery />} />
             <Route path="blog" element={<Blog />} />
-            <Route path="blog/radiator-cold-at-bottom" element={<BlogRadiatorColdAtBottom />} />
-            <Route path="blog/boiler-repair-vs-replacement" element={<BlogBoilerRepairVsReplacement />} />
-            <Route path="blog/landlord-gas-safety-check" element={<BlogLandlordGasSafetyCheck />} />
-            <Route path="blog/burst-pipe-what-to-do" element={<BlogBurstPipeWhatToDo />} />
-            <Route path="blog/check-gas-safe-registered" element={<BlogCheckGasSafeRegistered />} />
+            {/* Single dynamic route handles all blog posts via /blogs/:slug.md */}
+            <Route path="blog/:slug" element={<BlogPost />} />
             <Route path="emergency-plumber-huyton" element={<EmergencyPlumberHuyton />} />
             <Route path="emergency-plumber-prescot" element={<EmergencyPlumberPrescot />} />
             <Route path="boiler-repair-knowsley" element={<BoilerRepairKnowsley />} />
