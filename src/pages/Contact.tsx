@@ -2,7 +2,9 @@ import React, { useState, useRef } from 'react';
 import { Phone, Mail, MapPin, Send, ShieldCheck, Clock, CheckCircle2, Facebook, Instagram } from 'lucide-react';
 import { motion } from 'motion/react';
 import SEO from '@/components/SEO';
-import emailjs from '@emailjs/browser';
+
+// Paul's WhatsApp — same number as the landline, confirmed 2026-07-20.
+const WHATSAPP_URL = 'https://wa.me/441514402614';
 
 // Sanitise input: strip HTML tags and script content
 function sanitise(input: string): string {
@@ -35,6 +37,7 @@ export default function Contact() {
   const [formState, setFormState] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [validationErrors, setValidationErrors] = useState<Record<string, string>>({});
   const [rateLimitMsg, setRateLimitMsg] = useState('');
+  const [waUrl, setWaUrl] = useState('');
   const lastSubmitRef = useRef<number>(0);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -74,20 +77,22 @@ export default function Contact() {
     }
 
     setValidationErrors({});
-    setFormState('submitting');
 
-    try {
-      await emailjs.sendForm(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_TEMPLATE_ID,
-        formRef.current,
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      );
-      lastSubmitRef.current = Date.now();
-      setFormState('success');
-    } catch {
-      setFormState('error');
-    }
+    // Hand the enquiry straight to Paul's WhatsApp, prefilled — visitor just taps send.
+    const serviceType = sanitise(formData.get('service_type') as string || '');
+    const lines = [
+      'New enquiry from liverpoolsplumber.co.uk',
+      `Name: ${name}`,
+      `Phone: ${phone}`,
+      serviceType ? `Service: ${serviceType}` : '',
+      `Message: ${message}`,
+    ].filter(Boolean);
+    const url = `${WHATSAPP_URL}?text=${encodeURIComponent(lines.join('\n'))}`;
+    setWaUrl(url);
+    try { (window as unknown as { rvTrack?: (ev: string) => void }).rvTrack?.('Lead'); } catch { /* tracking must never block the lead */ }
+    window.open(url, '_blank', 'noopener');
+    lastSubmitRef.current = Date.now();
+    setFormState('success');
   };
 
   return (
@@ -178,11 +183,22 @@ export default function Contact() {
                   <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-full bg-green-100 text-green-600">
                     <CheckCircle2 className="h-10 w-10" />
                   </div>
-                  <h3 className="mb-4 text-3xl font-black text-gray-900">Got it!</h3>
-                  <p className="text-gray-600">Got your message. I&apos;ll give you a shout back as soon as I&apos;m off this job.</p>
+                  <h3 className="mb-4 text-3xl font-black text-gray-900">Nearly there!</h3>
+                  <p className="text-gray-600">WhatsApp has opened with your message ready — just tap <strong>send</strong> and it goes straight to Paul&apos;s phone.</p>
+                  {waUrl && (
+                    <a
+                      href={waUrl}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-6 inline-block rounded-full bg-green-600 px-8 py-3 font-bold text-white hover:bg-green-700"
+                    >
+                      WhatsApp didn&apos;t open? Tap here
+                    </a>
+                  )}
+                  <p className="mt-4 text-sm text-gray-500">Urgent? Ring Paul on 0151 440 2614.</p>
                   <button
                     onClick={() => setFormState('idle')}
-                    className="mt-8 font-bold text-blue-600 hover:underline"
+                    className="mt-6 block mx-auto font-bold text-blue-600 hover:underline"
                   >
                     Send another message
                   </button>

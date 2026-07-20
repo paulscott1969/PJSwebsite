@@ -2,9 +2,13 @@ import React, { useState, useEffect, useRef } from 'react';
 import { MessageSquare, X, Phone, Send, User, Wrench } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 import { cn } from '@/lib/utils';
-import emailjs from '@emailjs/browser';
 
-emailjs.init(import.meta.env.VITE_EMAILJS_PUBLIC_KEY);
+// Paul's WhatsApp — same number as the landline, confirmed 2026-07-20.
+const WHATSAPP_URL = 'https://wa.me/441514402614';
+
+const trackLead = () => {
+  try { (window as unknown as { rvTrack?: (ev: string) => void }).rvTrack?.('Lead'); } catch { /* tracking must never block the lead */ }
+};
 
 const isUrgent = (text: string): boolean => {
   const keywords = [
@@ -85,38 +89,17 @@ export default function Chatbot() {
     ]);
   };
 
-  const sendEmail = async (finalPostcode: string) => {
-    const urgencyLabel = isEmergency 
-      ? '🚨 EMERGENCY' 
-      : '📋 New Enquiry';
-    
-    const badgeColor = isEmergency 
-      ? '#dc2626' 
-      : '#2563eb';
-
-    const subject = isEmergency
-      ? `🚨 URGENT EMERGENCY - ${userName} needs immediate help`
-      : `New Enquiry - ${userName} from PJS Plumbing Website`;
-
-    try {
-      await emailjs.send(
-        import.meta.env.VITE_EMAILJS_SERVICE_ID,
-        import.meta.env.VITE_EMAILJS_CHATBOT_TEMPLATE_ID,
-        {
-          subject: subject,
-          urgency_label: urgencyLabel,
-          badge_color: badgeColor,
-          customer_name: userName,
-          customer_phone: userPhone,
-          customer_postcode: finalPostcode,
-          problem: userProblem,
-          time: new Date().toLocaleString('en-GB')
-        },
-        import.meta.env.VITE_EMAILJS_PUBLIC_KEY
-      );
-    } catch {
-      // Silently handle — do not expose system info
-    }
+  // Prefilled WhatsApp link carrying the whole chat enquiry — the visitor taps send,
+  // Paul gets it instantly on his phone. No third-party email service involved.
+  const waUrlFor = (finalPostcode: string, emergency: boolean) => {
+    const lines = [
+      emergency ? 'EMERGENCY - website chat enquiry' : 'New website chat enquiry',
+      `Name: ${userName}`,
+      `Phone: ${userPhone}`,
+      `Postcode: ${finalPostcode}`,
+      `Problem: ${userProblem}`,
+    ];
+    return `${WHATSAPP_URL}?text=${encodeURIComponent(lines.join('\n'))}`;
   };
 
   const handleSend = (text: string) => {
@@ -161,14 +144,39 @@ export default function Chatbot() {
         setStep('postcode');
       } else if (step === 'postcode') {
         setUserPostcode(text);
-        sendEmail(text);
         setStep('done');
+
+        const waUrl = waUrlFor(text, currentIsEmergency);
+        const waButton = (
+          <a
+            href={waUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            onClick={trackLead}
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              gap: '8px',
+              backgroundColor: '#16a34a',
+              color: 'white',
+              padding: '12px 20px',
+              borderRadius: '9999px',
+              fontWeight: 'bold',
+              fontSize: '14px',
+              textDecoration: 'none',
+              marginTop: '8px'
+            }}
+          >
+            💬 Send to Paul on WhatsApp
+          </a>
+        );
 
         if (currentIsEmergency) {
           addMessage(
             <div>
-              <span>Thanks {userName}. Paul has been notified and will call you on {userPhone} as soon as possible. For the fastest response — call him directly right now:</span>
-              <a 
+              <span>Thanks {userName}. For the fastest response call Paul right now — or tap the green button and your details go straight to his WhatsApp, ready to send:</span>
+              <a
                 href="tel:01514402614"
                 style={{
                   display: 'flex',
@@ -187,11 +195,18 @@ export default function Chatbot() {
               >
                 📞 Call Paul Now — 0151 440 2614
               </a>
+              {waButton}
             </div>,
             'bot'
           );
         } else {
-          addMessage(`Thanks ${userName}. Paul will call you back on ${userPhone} within a few hours. If anything gets worse before then, call him directly on 0151 440 2614.`, 'bot');
+          addMessage(
+            <div>
+              <span>Thanks {userName}. Tap below and your enquiry goes straight to Paul&apos;s WhatsApp, all filled in — just press send. If anything gets worse before he replies, ring him on 0151 440 2614.</span>
+              {waButton}
+            </div>,
+            'bot'
+          );
         }
       }
     }, 1000);
