@@ -6,6 +6,47 @@
           window.gtag = gtag; gtag('js', new Date()); gtag('config', GA4_ID);
         })();</script>   <!-- rvTrack wrapper - always defined, no-ops when tracking is off. Fires
          Contact on tel:/wa clicks so it is ready when a Pixel/GA4 ID is added. --> <script>
+      /* BetterWays lead-source capture — resolves the visitor's channel once and
+         keeps it, so every WhatsApp enquiry says where the person came from. */
+      (function () {
+        var K = 'pjs_src';
+        function resolve() {
+          try {
+            var p = new URLSearchParams(location.search);
+            var c = (p.get('utm_campaign') || '').toLowerCase();
+            var s = (p.get('utm_source') || '').toLowerCase();
+            var m = (p.get('utm_medium') || '').toLowerCase();
+            if (c === 'gbp') return 'Google Business Profile';
+            if (s) return s.charAt(0).toUpperCase() + s.slice(1) + (m ? ' ' + m : '');
+            var r = document.referrer || '';
+            if (!r) return 'Direct';
+            var h = '';
+            try { h = new URL(r).hostname.replace(/^www\./, ''); } catch (e) {}
+            if (!h || h.indexOf('liverpoolsplumber.co.uk') !== -1) return '';
+            if (/google\./.test(h)) return 'Google';
+            if (/bing\./.test(h)) return 'Bing';
+            if (/chatgpt\.com|openai\./.test(h)) return 'ChatGPT';
+            if (/perplexity\./.test(h)) return 'Perplexity';
+            if (/duckduckgo\./.test(h)) return 'DuckDuckGo';
+            if (/yahoo\./.test(h)) return 'Yahoo';
+            if (/facebook\.|fb\.com/.test(h)) return 'Facebook';
+            if (/instagram\./.test(h)) return 'Instagram';
+            if (/yell\.com/.test(h)) return 'Yell';
+            if (/checkatrade\./.test(h)) return 'Checkatrade';
+            return h;
+          } catch (e) { return ''; }
+        }
+        try {
+          var cur = localStorage.getItem(K), v = resolve();
+          /* first non-direct touch wins; a placeholder 'Direct' can still upgrade */
+          if (v && (!cur || (cur === 'Direct' && v !== 'Direct'))) localStorage.setItem(K, v);
+        } catch (e) {}
+        window.pjsSource = function () {
+          try { return localStorage.getItem(K) || resolve() || 'Direct'; } catch (e) { return resolve() || 'Direct'; }
+        };
+      })();
+    </script>
+    <script>
       window.rvTrack = function (ev, params) {
         try { if (window.fbq) { params ? window.fbq('track', ev, params) : window.fbq('track', ev); } } catch (e) {}
         try { if (window.gtag) window.gtag('event', ev, params || {}); } catch (e) {}

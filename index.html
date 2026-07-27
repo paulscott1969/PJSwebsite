@@ -190,11 +190,171 @@
     ]
   }
   </script>
+<script>
+      /* BetterWays lead-source capture — resolves the visitor's channel once and
+         keeps it, so every WhatsApp enquiry says where the person came from. */
+      (function () {
+        var K = 'pjs_src';
+        function resolve() {
+          try {
+            var p = new URLSearchParams(location.search);
+            var c = (p.get('utm_campaign') || '').toLowerCase();
+            var s = (p.get('utm_source') || '').toLowerCase();
+            var m = (p.get('utm_medium') || '').toLowerCase();
+            if (c === 'gbp') return 'Google Business Profile';
+            if (s) return s.charAt(0).toUpperCase() + s.slice(1) + (m ? ' ' + m : '');
+            var r = document.referrer || '';
+            if (!r) return 'Direct';
+            var h = '';
+            try { h = new URL(r).hostname.replace(/^www\./, ''); } catch (e) {}
+            if (!h || h.indexOf('liverpoolsplumber.co.uk') !== -1) return '';
+            if (/google\./.test(h)) return 'Google';
+            if (/bing\./.test(h)) return 'Bing';
+            if (/chatgpt\.com|openai\./.test(h)) return 'ChatGPT';
+            if (/perplexity\./.test(h)) return 'Perplexity';
+            if (/duckduckgo\./.test(h)) return 'DuckDuckGo';
+            if (/yahoo\./.test(h)) return 'Yahoo';
+            if (/facebook\.|fb\.com/.test(h)) return 'Facebook';
+            if (/instagram\./.test(h)) return 'Instagram';
+            if (/yell\.com/.test(h)) return 'Yell';
+            if (/checkatrade\./.test(h)) return 'Checkatrade';
+            return h;
+          } catch (e) { return ''; }
+        }
+        try {
+          var cur = localStorage.getItem(K), v = resolve();
+          /* first non-direct touch wins; a placeholder 'Direct' can still upgrade */
+          if (v && (!cur || (cur === 'Direct' && v !== 'Direct'))) localStorage.setItem(K, v);
+        } catch (e) {}
+        window.pjsSource = function () {
+          try { return localStorage.getItem(K) || resolve() || 'Direct'; } catch (e) { return resolve() || 'Direct'; }
+        };
+      })();
+    </script>
 </head>
 
 <body>
   <div id="root"></div>
   <script type="module" src="/src/main.tsx"></script>
+
+  <!-- BetterWays: site directory. Static HTML in the initial payload so every page
+       has a crawlable internal link from the homepage (they were sitemap-only). -->
+  <nav class="pjs-directory" aria-label="Site directory">
+    <div class="pjs-directory-inner">
+      <h2>Everything Paul does</h2>
+      <div class="pjs-directory-grid">
+        <div>
+          <h3>Emergency & urgent</h3>
+          <ul>
+          <li><a href="/24-hour-plumber-liverpool">Out of hours plumber in Liverpool</a></li>
+          <li><a href="/emergency-boiler-repair-liverpool">Emergency boiler repair in Liverpool</a></li>
+          <li><a href="/emergency-gas-engineer-liverpool">Emergency gas engineer in Liverpool</a></li>
+          <li><a href="/burst-pipe-liverpool">Burst pipe in Liverpool</a></li>
+          <li><a href="/no-hot-water-liverpool">No hot water in Liverpool</a></li>
+          <li><a href="/blocked-toilet-emergency-liverpool">Blocked toilet in Liverpool</a></li>
+          <li><a href="/blocked-drains-liverpool">Blocked drains in Liverpool</a></li>
+          <li><a href="/leak-detection-repair-liverpool">Leak detection and repair in Liverpool</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Boilers & heating</h3>
+          <ul>
+          <li><a href="/boiler-repair-liverpool">Boiler repair in Liverpool</a></li>
+          <li><a href="/boiler-service-liverpool">Boiler service in Liverpool</a></li>
+          <li><a href="/boiler-installation-liverpool">Boiler installation in Liverpool</a></li>
+          <li><a href="/new-boiler-liverpool">New boiler in Liverpool</a></li>
+          <li><a href="/new-boiler-cost-liverpool">New boiler cost in Liverpool</a></li>
+          <li><a href="/boilers-we-install-liverpool">The boilers Paul installs in Liverpool</a></li>
+          <li><a href="/central-heating-liverpool">Central heating in Liverpool</a></li>
+          <li><a href="/radiator-repair-liverpool">Radiator repair in Liverpool</a></li>
+          <li><a href="/power-flushing-liverpool">Power flushing in Liverpool</a></li>
+          <li><a href="/underfloor-heating-liverpool">Underfloor heating in Liverpool</a></li>
+          <li><a href="/gas-engineer-liverpool">Gas Safe engineer in Liverpool</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Boiler brands</h3>
+          <ul>
+          <li><a href="/vaillant-boiler-liverpool">Vaillant boilers in Liverpool</a></li>
+          <li><a href="/worcester-bosch-boiler-liverpool">Worcester Bosch boilers in Liverpool</a></li>
+          <li><a href="/baxi-boiler-liverpool">Baxi boilers in Liverpool</a></li>
+          <li><a href="/ideal-boiler-liverpool">Ideal boilers in Liverpool</a></li>
+          <li><a href="/glow-worm-boiler-liverpool">Glow-worm boilers in Liverpool</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Plumbing repairs</h3>
+          <ul>
+          <li><a href="/toilet-repair-liverpool">Toilet repair in Liverpool</a></li>
+          <li><a href="/tap-repair-replacement-liverpool">Tap repair and replacement in Liverpool</a></li>
+          <li><a href="/shower-repair-installation-liverpool">Shower repair and installation in Liverpool</a></li>
+          <li><a href="/immersion-heater-liverpool">Immersion heater repair in Liverpool</a></li>
+          <li><a href="/water-heater-installation-liverpool">Water heater installation in Liverpool</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Bathrooms</h3>
+          <ul>
+          <li><a href="/bathroom-fitting-liverpool">Bathroom fitting in Liverpool</a></li>
+          <li><a href="/accessible-bathrooms-liverpool">Accessible bathrooms in Liverpool</a></li>
+          <li><a href="/wet-room-installation-liverpool">Wet room installation in Liverpool</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Commercial & landlord</h3>
+          <ul>
+          <li><a href="/commercial-services">Commercial &amp; landlord services in Liverpool</a></li>
+          <li><a href="/commercial-gas-engineer-liverpool">Commercial gas engineer in Liverpool</a></li>
+          <li><a href="/commercial-boiler-service-liverpool">Commercial boiler service in Liverpool</a></li>
+          <li><a href="/commercial-gas-safety-certificate-liverpool">Commercial gas safety certificates in Liverpool</a></li>
+          <li><a href="/landlord-services-liverpool">Landlord services in Liverpool</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Areas Paul covers</h3>
+          <ul>
+          <li><a href="/plumber-huyton">Plumber in Huyton</a></li>
+          <li><a href="/plumber-knowsley">Plumber in Knowsley</a></li>
+          <li><a href="/plumber-prescot">Plumber in Prescot</a></li>
+          <li><a href="/plumber-whiston">Plumber in Whiston</a></li>
+          <li><a href="/plumber-roby">Plumber in Roby</a></li>
+          <li><a href="/plumber-halewood">Plumber in Halewood</a></li>
+          <li><a href="/plumber-rainhill">Plumber in Rainhill</a></li>
+          <li><a href="/plumber-kirkby">Plumber in Kirkby</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Costs & advice</h3>
+          <ul>
+          <li><a href="/pricing">How Paul prices a job</a></li>
+          <li><a href="/finance-options">Spreading the cost of a bigger job</a></li>
+          <li><a href="/boiler-grants-liverpool">Boiler grants in Liverpool, explained honestly</a></li>
+          <li><a href="/how-does-a-combi-boiler-work">How does a combi boiler work?</a></li>
+          <li><a href="/why-is-my-boiler-not-working">Why is my boiler not working?</a></li>
+          <li><a href="/boiler-keeps-turning-off">Why does my boiler keep turning off?</a></li>
+          <li><a href="/boiler-losing-pressure">Why does my boiler keep losing pressure?</a></li>
+          <li><a href="/radiator-cold-at-the-bottom">Why is my radiator cold at the bottom but hot at the top?</a></li>
+          <li><a href="/how-to-balance-radiators">How to balance radiators</a></li>
+          </ul>
+        </div>
+      </div>
+      <p class="pjs-directory-foot">PJS Plumbing &amp; Heating &middot; Gas Safe 221708 &middot; Huyton, Liverpool &middot; <a href="tel:01514402614">0151 440 2614</a></p>
+    </div>
+  </nav>
+  <style>
+    .pjs-directory{background:#0b1220;color:#cbd5e1;font-family:ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding:56px 20px 40px;border-top:4px solid #1d4ed8}
+    .pjs-directory-inner{max-width:1180px;margin:0 auto}
+    .pjs-directory h2{color:#fff;font-size:20px;font-weight:800;margin:0 0 28px;letter-spacing:-.01em}
+    .pjs-directory-grid{display:grid;gap:28px 32px;grid-template-columns:repeat(auto-fit,minmax(215px,1fr))}
+    .pjs-directory h3{color:#93b4fd;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.07em;margin:0 0 10px}
+    .pjs-directory ul{list-style:none;margin:0;padding:0}
+    .pjs-directory li{margin:0 0 7px}
+    .pjs-directory a{color:#cbd5e1;text-decoration:none;font-size:13.5px;line-height:1.45}
+    .pjs-directory a:hover{color:#fff;text-decoration:underline}
+    .pjs-directory-foot{margin:34px 0 0;padding-top:20px;border-top:1px solid #1e293b;font-size:12.5px;color:#94a3b8}
+    .pjs-directory-foot a{color:#93b4fd}
+    @media(max-width:640px){.pjs-directory{padding:40px 16px 32px}.pjs-directory-grid{gap:24px}}
+  </style>
 </body>
 
 </html>

@@ -6,6 +6,11 @@ import SEO from '@/components/SEO';
 // Paul's WhatsApp — same number as the landline, confirmed 2026-07-20.
 const WHATSAPP_URL = 'https://wa.me/441514402614';
 
+// Where the visitor came from (set by the capture snippet in index.html).
+function leadSource(): string {
+  try { return (window as unknown as { pjsSource?: () => string }).pjsSource?.() || ''; } catch { return ''; }
+}
+
 // Sanitise input: strip HTML tags and script content
 function sanitise(input: string): string {
   return input
@@ -86,6 +91,7 @@ export default function Contact() {
       `Phone: ${phone}`,
       serviceType ? `Service: ${serviceType}` : '',
       `Message: ${message}`,
+      leadSource() ? `Source: ${leadSource()}` : '',
     ].filter(Boolean);
     const url = `${WHATSAPP_URL}?text=${encodeURIComponent(lines.join('\n'))}`;
     setWaUrl(url);

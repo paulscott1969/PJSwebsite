@@ -6,6 +6,11 @@ import { cn } from '@/lib/utils';
 // Paul's WhatsApp — same number as the landline, confirmed 2026-07-20.
 const WHATSAPP_URL = 'https://wa.me/441514402614';
 
+// Where the visitor came from (set by the capture snippet in index.html).
+function leadSource(): string {
+  try { return (window as unknown as { pjsSource?: () => string }).pjsSource?.() || ''; } catch { return ''; }
+}
+
 const trackLead = () => {
   try { (window as unknown as { rvTrack?: (ev: string) => void }).rvTrack?.('Lead'); } catch { /* tracking must never block the lead */ }
 };
@@ -99,6 +104,8 @@ export default function Chatbot() {
       `Postcode: ${finalPostcode}`,
       `Problem: ${userProblem}`,
     ];
+    const src = leadSource();
+    if (src) lines.push(`Source: ${src}`);
     return `${WHATSAPP_URL}?text=${encodeURIComponent(lines.join('\n'))}`;
   };
 
