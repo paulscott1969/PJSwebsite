@@ -40,9 +40,9 @@
         landing_page: location.pathname, referrer: document.referrer || '',
         consent: true, submitted_at: new Date().toISOString()
       };
-      var body = JSON.stringify(payload), blob = new Blob([body], { type: 'text/plain' });
-      if (navigator.sendBeacon && navigator.sendBeacon(WEBHOOK, blob)) return;
-      fetch(WEBHOOK, { method: 'POST', body: body, keepalive: true, mode: 'no-cors', headers: { 'Content-Type': 'text/plain' } });
+      // GHL inbound webhooks require application/json (they reject text/plain).
+      // keepalive lets the POST survive the page navigating to WhatsApp on submit.
+      fetch(WEBHOOK, { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload), keepalive: true });
     } catch (e) { /* never break the WhatsApp hand-off */ }
   }
 
