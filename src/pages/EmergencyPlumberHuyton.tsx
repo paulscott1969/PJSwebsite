@@ -95,9 +95,9 @@ export default function EmergencyPlumberHuyton() {
   return (
     <>
       <SEO
-        title="Emergency Plumber Huyton | 24/7 Fast Response | PJS Plumbing"
-        description="Need an emergency plumber in Huyton fast? Paul Scott covers Huyton and all of Knowsley 24/7. Local Gas Safe engineer — burst pipes, leaks, boiler breakdowns. Call 0151 440 2614."
-        keywords="emergency plumber huyton, 24 hour plumber huyton, burst pipe huyton, plumber huyton knowsley, emergency plumbing knowsley"
+        title="Emergency Plumber Huyton | Fast Local Response | PJS Plumbing"
+        description="Need an emergency plumber in Huyton fast? Paul Scott covers Huyton and all of Knowsley with a fast local response, often same-day. Local Gas Safe engineer — burst pipes, leaks, boiler breakdowns. Call 0151 440 2614."
+        keywords="emergency plumber huyton, burst pipe huyton, plumber huyton knowsley, emergency plumbing knowsley"
         canonical="https://liverpoolsplumber.co.uk/emergency-plumber-huyton"
       />
       <script
@@ -115,10 +115,10 @@ export default function EmergencyPlumberHuyton() {
           <div className="max-w-3xl">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-red-500/20 px-4 py-1.5 text-sm font-bold text-red-300 ring-1 ring-red-400/30">
               <Clock className="h-4 w-4" />
-              Available 24/7 in Huyton — No Waiting, No Answer Machines
+              Local to Huyton — No Waiting, No Answer Machines
             </div>
             <h1 className="mb-6 text-5xl font-black leading-tight tracking-tight sm:text-6xl">
-              Emergency Plumber in Huyton — 24/7 Local Response
+              Emergency Plumber in Huyton — Fast Local Response
             </h1>
             <p className="mb-8 text-xl text-blue-100/90 leading-relaxed">
               Burst pipe, flooding, or no heating in Huyton? Paul Scott provides emergency plumbing throughout Huyton and the wider Knowsley area. Call him directly — you'll speak to the man who's actually coming out, not a call centre.
@@ -251,7 +251,7 @@ export default function EmergencyPlumberHuyton() {
                   'Gas Safe registered — Reg #221708',
                   'Fully insured with public liability coverage',
                   'Upfront pricing — you know the cost before he starts',
-                  '24/7 emergency response for Huyton residents',
+                  'Fast local emergency response for Huyton residents, often same-day',
                 ].map((point, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <CheckCircle2 className="h-5 w-5 text-blue-300 shrink-0" />

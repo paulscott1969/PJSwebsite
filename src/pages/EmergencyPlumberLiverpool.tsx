@@ -75,9 +75,9 @@ export default function EmergencyPlumberLiverpool() {
   return (
     <>
       <SEO
-        title="Emergency Plumber Liverpool | 24/7 Rapid Response"
-        description="Burst pipe or sudden leak in Liverpool? Call Paul Scott directly. Fast 24/7 emergency plumbing response across Liverpool and Knowsley. Gas Safe registered."
-        keywords="emergency plumber liverpool, 24 hour plumber, burst pipe repair, local emergency plumbing"
+        title="Emergency Plumber Liverpool | Fast Local Response"
+        description="Burst pipe or sudden leak in Liverpool? Call Paul Scott directly. Fast local emergency plumbing response, often same-day, across Liverpool and Knowsley. Gas Safe registered."
+        keywords="emergency plumber liverpool, burst pipe repair, local emergency plumbing"
         canonical="https://liverpoolsplumber.co.uk/emergency-plumber-liverpool"
       />
       <script
@@ -91,10 +91,10 @@ export default function EmergencyPlumberLiverpool() {
           <div className="max-w-3xl">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-red-500/20 px-4 py-1.5 text-sm font-bold text-red-300 ring-1 ring-red-400/30">
               <Clock className="h-4 w-4" />
-              Available 24/7 — No Answer Machines
+              Straight to Paul — No Answer Machines
             </div>
             <h1 className="mb-6 text-5xl font-black leading-tight tracking-tight sm:text-6xl">
-              Emergency Plumber in Liverpool — Available 24/7
+              Emergency Plumber in Liverpool — Fast Local Response
             </h1>
             <p className="mb-8 text-xl text-blue-100/90 leading-relaxed">
               A burst pipe or severe leak can cause thousands in damage within hours. Paul Scott provides emergency plumbing across Liverpool and Knowsley. Call him directly on 0151 440 2614 — no call centres, no waiting, just fast local response.

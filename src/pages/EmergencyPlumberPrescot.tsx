@@ -96,9 +96,9 @@ export default function EmergencyPlumberPrescot() {
   return (
     <>
       <SEO
-        title="Emergency Plumber Prescot | 24/7 Local Response | PJS Plumbing"
-        description="Emergency plumber in Prescot available 24/7. Paul Scott covers Prescot, Rainhill, Whiston and all of Knowsley. Gas Safe registered, fast local response. Call 0151 440 2614."
-        keywords="emergency plumber prescot, 24 hour plumber prescot, burst pipe prescot, plumber prescot knowsley, emergency plumbing rainhill whiston"
+        title="Emergency Plumber Prescot | Fast Local Response | PJS Plumbing"
+        description="Emergency plumber covering Prescot with a fast local response, often same-day. Paul Scott covers Prescot, Rainhill, Whiston and all of Knowsley. Gas Safe registered, fast local response. Call 0151 440 2614."
+        keywords="emergency plumber prescot, burst pipe prescot, plumber prescot knowsley, emergency plumbing rainhill whiston"
         canonical="https://liverpoolsplumber.co.uk/emergency-plumber-prescot"
       />
       <script
@@ -116,10 +116,10 @@ export default function EmergencyPlumberPrescot() {
           <div className="max-w-3xl">
             <div className="mb-4 inline-flex items-center gap-2 rounded-full bg-red-500/20 px-4 py-1.5 text-sm font-bold text-red-300 ring-1 ring-red-400/30">
               <Clock className="h-4 w-4" />
-              24/7 in Prescot & Surrounding Areas
+              Local to Prescot & Surrounding Areas
             </div>
             <h1 className="mb-6 text-5xl font-black leading-tight tracking-tight sm:text-6xl">
-              Emergency Plumber in Prescot — Available Around the Clock
+              Emergency Plumber in Prescot — Fast Local Response
             </h1>
             <p className="mb-8 text-xl text-blue-100/90 leading-relaxed">
               Burst pipe or flooding in Prescot? Paul Scott provides fast emergency plumbing throughout Prescot, Rainhill, Whiston, and the wider Knowsley area. Call him directly — no call centres, no waiting.
@@ -252,7 +252,7 @@ export default function EmergencyPlumberPrescot() {
                   'Gas Safe registered — Reg #221708',
                   'Fully insured — public liability covered',
                   'Price agreed upfront — no shock invoices',
-                  '24/7 emergency response for Prescot residents',
+                  'Fast local emergency response for Prescot residents, often same-day',
                 ].map((point, i) => (
                   <div key={i} className="flex items-center gap-3">
                     <CheckCircle2 className="h-5 w-5 text-blue-300 shrink-0" />
