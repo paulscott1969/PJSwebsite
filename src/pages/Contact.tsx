@@ -95,7 +95,7 @@ export default function Contact() {
     ].filter(Boolean);
     const url = `${WHATSAPP_URL}?text=${encodeURIComponent(lines.join('\n'))}`;
     setWaUrl(url);
-    try { (window as unknown as { rvTrack?: (ev: string) => void }).rvTrack?.('Lead'); } catch { /* tracking must never block the lead */ }
+    try { (window as unknown as { rvTrack?: (ev: string, p?: Record<string, string>) => void }).rvTrack?.('Lead', { method: 'form' }); } catch { /* tracking must never block the lead */ }
     window.open(url, '_blank', 'noopener');
     lastSubmitRef.current = Date.now();
     setFormState('success');

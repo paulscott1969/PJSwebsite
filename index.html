@@ -23,7 +23,8 @@
       var a = e.target && e.target.closest ? e.target.closest('a') : null;
       if (!a) return;
       var h = a.getAttribute('href') || '';
-      if (h.indexOf('tel:') === 0 || h.indexOf('wa.me') !== -1) window.rvTrack('Contact');
+      if (h.indexOf('tel:') === 0) window.rvTrack('Contact', { method: 'phone' });
+      else if (h.indexOf('wa.me') !== -1 || h.indexOf('api.whatsapp') !== -1) window.rvTrack('Contact', { method: 'whatsapp' });
     });
   </script>
 

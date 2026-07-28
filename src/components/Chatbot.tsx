@@ -12,7 +12,7 @@ function leadSource(): string {
 }
 
 const trackLead = () => {
-  try { (window as unknown as { rvTrack?: (ev: string) => void }).rvTrack?.('Lead'); } catch { /* tracking must never block the lead */ }
+  try { (window as unknown as { rvTrack?: (ev: string, p?: Record<string, string>) => void }).rvTrack?.('Lead', { method: 'chatbot' }); } catch { /* tracking must never block the lead */ }
 };
 
 const isUrgent = (text: string): boolean => {
