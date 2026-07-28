@@ -30,7 +30,8 @@
       var p = new URLSearchParams(location.search);
       var payload = {
         first_name: nm[0], last_name: nm[1], phone: e164(input.phone), email: '',
-        full_address: '', postcode: '', job_type: 'Plumbing / heating enquiry', quote_value: 0,
+        full_address: '', postcode: input.postcode || '',
+        job_type: ((input.job || '').trim().slice(0, 80)) || 'Plumbing / heating enquiry', quote_value: 0,
         cta_type: input.cta || 'whatsapp', source_page: location.pathname,
         utm_source: (p.get('utm_source') || source() || 'Direct'),
         utm_medium: p.get('utm_medium') || '', utm_campaign: p.get('utm_campaign') || '',
@@ -92,5 +93,20 @@
     e.preventDefault();
     inject();
     open(a.href);
+  }, true);
+
+  // The static service/area pages capture via a quote form (form.pjs-quote) that
+  // submits to WhatsApp. Grab name + phone + postcode + job on submit → GHL, then
+  // let the form carry on to WhatsApp. (Honeypot 'company' filled = spam, skip.)
+  document.addEventListener('submit', function (e) {
+    var f = e.target;
+    if (!f || !f.classList || f.classList.contains('pjs-quote') === false) return;
+    try {
+      var d = new FormData(f);
+      if (((d.get('company') || '') + '').trim()) return;
+      var phone = (d.get('phone') || '') + '';
+      if (phone.replace(/\D/g, '').length < 10) return;
+      captureLead({ name: (d.get('name') || '') + '', phone: phone, cta: 'form', postcode: (d.get('postcode') || '') + '', job: (d.get('job') || '') + '' });
+    } catch (err) { /* never block the form */ }
   }, true);
 })();
