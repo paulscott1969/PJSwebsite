@@ -95,18 +95,25 @@
     open(a.href);
   }, true);
 
-  // The static service/area pages capture via a quote form (form.pjs-quote) that
-  // submits to WhatsApp. Grab name + phone + postcode + job on submit → GHL, then
-  // let the form carry on to WhatsApp. (Honeypot 'company' filled = spam, skip.)
+  // Capture ANY lead form on submit — the static pages' quote form (form.pjs-quote:
+  // name/postcode/phone/job) AND the React /contact form (from_name/phone/service_type/
+  // message). Requirement: a name + a valid phone, and no honeypot filled. Then GHL,
+  // and the page's own handler carries on (WhatsApp / EmailJS).
   document.addEventListener('submit', function (e) {
     var f = e.target;
-    if (!f || !f.classList || f.classList.contains('pjs-quote') === false) return;
+    if (!f || f.tagName !== 'FORM') return;
     try {
       var d = new FormData(f);
-      if (((d.get('company') || '') + '').trim()) return;
+      if ((((d.get('company') || '') + (d.get('_honey') || '')) + '').trim()) return; // honeypot filled = spam
       var phone = (d.get('phone') || '') + '';
       if (phone.replace(/\D/g, '').length < 10) return;
-      captureLead({ name: (d.get('name') || '') + '', phone: phone, cta: 'form', postcode: (d.get('postcode') || '') + '', job: (d.get('job') || '') + '' });
+      var name = (d.get('name') || d.get('from_name') || '') + '';
+      if (name.trim().length < 2) return;
+      captureLead({
+        name: name, phone: phone, cta: 'form',
+        postcode: (d.get('postcode') || '') + '',
+        job: (d.get('job') || d.get('service_type') || d.get('message') || '') + ''
+      });
     } catch (err) { /* never block the form */ }
   }, true);
 })();
