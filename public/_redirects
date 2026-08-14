@@ -60,5 +60,11 @@
 /why-is-my-boiler-not-working   /why-is-my-boiler-not-working.html   200
 /worcester-bosch-boiler-liverpool   /worcester-bosch-boiler-liverpool.html   200
 
+/plumber-childwall   /plumber-childwall.html   200
+/plumber-garston   /plumber-garston.html   200
+/plumber-speke   /plumber-speke.html   200
+/plumber-woolton   /plumber-woolton.html   200
+/plumber-aintree   /plumber-aintree.html   200
+
 # SPA catch-all (existing) — MUST remain last
 /* /index.html 200
