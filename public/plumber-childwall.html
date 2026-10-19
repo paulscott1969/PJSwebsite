@@ -114,7 +114,7 @@ Knowsley: L26, L28, L32, L33, L34, L35, L36. Also covering L10, L14, L16, L19, L
           var a = e.target && e.target.closest ? e.target.closest('a') : null;
           if (!a) return;
           var h = a.getAttribute('href') || '';
-          if (h.indexOf('tel:') === 0)                                   fire('Contact', { method: 'phone' });
+          if (h.indexOf('tel:') === 0) { fire('Contact', { method: 'phone' }); try { window.gtag && window.gtag('event', 'phone_call', { method: 'phone', link_text: (a.textContent || '').trim().slice(0, 40), page_path: location.pathname }); } catch (err) {} }
           else if (h.indexOf('sms:') === 0)                             fire('Contact', { method: 'sms' });
           else if (h.indexOf('mailto:') === 0)                          fire('Contact', { method: 'email' });
           else if (h.indexOf('wa.me') > -1 || h.indexOf('api.whatsapp') > -1) fire('Contact', { method: 'whatsapp' });
